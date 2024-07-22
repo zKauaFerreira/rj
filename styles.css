@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap");
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('https://s2-g1.glbimg.com/NVjOs2_txt8NXMyKxLSsi_XosEM=/0x0:2048x1365/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/1/F/fKO46LR9m2MQxwTJUXFw/50702319337-76b1fa5911-k.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(6px) saturate(180%) contrast(110%) brightness(70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  user-select: none;
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: #32cd32 1px solid;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+
+p {
+  font-size: 1.1em;
+  color: #444;
+  line-height: 1.6;
+  user-select: none;
+}
+
+#Ult_Dado_Texto {
+  font-family: Sora;
+  color: #444;
+  margin-bottom: -1.3vw;
+  margin-top: -0.4vw;
+  font-size: 1.9em;
+  user-select: none;
+}
+
+#Ult_Dado_Numero {
+  font-size: 6.2em;
+  font-family: Sora;
+  color: #32cd32;
+  display: inline;
+  user-select: none;
+}
+
+#Data_ult_dado {
+  font-size: 1.41em;
+  font-family: Sora;
+  color: #444;
+  margin-top: -1vw;
+  margin-bottom: -0.2vw;
+  user-select: none;
+}
+
+#inundationAlert {
+  margin-right: 0.521vw;
+  font-style: normal;
+  font-size: 1.4em;
+  color: #444;
+  margin-bottom: 2vw;
+  user-select: none;
+}

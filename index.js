@@ -2,9 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-// O URL da API
+// URL da API
 const apiUrl = 'https://portal1.snirh.gov.br/server/rest/services/SGH/CotasReferencia2/MapServer/dynamicLayer/query?f=json&returnGeometry=false&spatialRel=esriSpatialRelIntersects&geometry=%7B"xmin"%3A-5704261.757328038%2C"ymin"%3A-3508025.0787798706%2C"xmax"%3A-5704204.429556822%2C"ymax"%3A-3507967.751008655%2C"spatialReference"%3A%7B"wkid"%3A102100%7D%7D&geometryType=esriGeometryEnvelope&inSR=102100&outFields=Data_ult_dado%2CUlt_Dado&outSR=102100&layer=%7B"source"%3A%7B"type"%3A"mapLayer"%2C"mapLayerId"%3A2%7D%7D';
-// Mantenha o caminho padrão
 const outputFilePath = path.join(__dirname, 'dados.json');
 
 // Função para formatar a data
@@ -14,9 +13,8 @@ function formatDate(date) {
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
 // Função para buscar os dados
@@ -39,6 +37,7 @@ async function fetchData() {
 
             // Salva os dados no arquivo
             fs.writeFileSync(outputFilePath, JSON.stringify(dataToSave, null, 2));
+            console.clear();
             console.log(`Dados salvos em ${outputFilePath}`);
         } else {
             console.log("Sem dados disponíveis");
@@ -49,29 +48,31 @@ async function fetchData() {
 }
 
 // Função para iniciar o cronômetro e buscar dados
-function startCron() {
-    // Executa imediatamente
-    fetchData();
+async function startCron() {
+    await fetchData(); // Executa imediatamente
 
     // Cronômetro de 30 minutos (1800000 milissegundos)
     const interval = 1800000; 
-
-    // Mostra o tempo restante no terminal
     let timeRemaining = interval;
 
     const timer = setInterval(() => {
         timeRemaining -= 1000; // Decrementa 1 segundo
 
-        // Converte o tempo restante em minutos e segundos
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        // Converte o tempo restante em minutos
+        const minutes = Math.floor(timeRemaining / 60000); // Tempo restante em minutos
 
-        process.stdout.write(`\rPróxima atualização em: ${minutes}m ${seconds}s`);
+        // Mostra o tempo restante no terminal a cada 1 minuto
+        if (timeRemaining % 60000 === 0) {
+            console.clear();
+            console.log(`Próxima atualização em: ${minutes}m`);
+            
+        }
 
         // Quando o tempo se esgota, busca os dados novamente e reinicia o cronômetro
         if (timeRemaining <= 0) {
-            fetchData();
+            fetchData(); // Busca os dados novamente
             timeRemaining = interval; // Reinicia o cronômetro
+            console.log(); // Para nova linha após atualização
         }
     }, 1000);
 }

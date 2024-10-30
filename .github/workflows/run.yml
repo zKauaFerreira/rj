@@ -20,11 +20,13 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Listar arquivos na raiz
+        run: ls -la
+
       - name: Executar script
         run: node index.js
 
-      - name: Listar arquivos na raiz
-        run: ls -la
+
 
       - name: Commit e push dados.json
         run: |

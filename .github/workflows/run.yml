@@ -23,12 +23,15 @@ jobs:
       - name: Executar script
         run: node index.js
 
+      - name: Listar arquivos na raiz
+        run: ls -la
+
       - name: Commit e push dados.json
         run: |
           git config --local user.email "kaua.codex@gmail.com"
           git config --local user.name "kauacodex"
           git add dados.json
-          git commit -m "Atualização de dados" || echo "Nada para atualizar"
+          git commit -m "Atualização de dados" || (echo "Nada para atualizar"; exit 0)
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use o token do GitHub Actions para push
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

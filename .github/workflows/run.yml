@@ -30,9 +30,6 @@ jobs:
       - name: Checar código
         uses: actions/checkout@v2
 
-      - name: Esperar 1 minuto
-        run: sleep 60  # Espera 60 segundos
-
       - name: Commit e push dados.json
         run: |
           git config --local user.email "kaua.codex@gmail.com"

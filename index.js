@@ -1,10 +1,9 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+const editFile = require("edit-file");
+const fs = require("fs");
+const path = require("path");
 
 // URL da API
 const apiUrl = 'https://portal1.snirh.gov.br/server/rest/services/SGH/CotasReferencia2/MapServer/dynamicLayer/query?f=json&returnGeometry=false&spatialRel=esriSpatialRelIntersects&geometry=%7B"xmin"%3A-5704261.757328038%2C"ymin"%3A-3508025.0787798706%2C"xmax"%3A-5704204.429556822%2C"ymax"%3A-3507967.751008655%2C"spatialReference"%3A%7B"wkid"%3A102100%7D%7D&geometryType=esriGeometryEnvelope&inSR=102100&outFields=Data_ult_dado%2CUlt_Dado&outSR=102100&layer=%7B"source"%3A%7B"type"%3A"mapLayer"%2C"mapLayerId"%3A2%7D%7D';
-const outputFilePath = path.join(process.cwd(), 'dados.json'); // Salva na raiz do repositório
 
 // Função para formatar a data
 function formatDate(date) {
@@ -13,13 +12,12 @@ function formatDate(date) {
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
 // Função para buscar os dados
-async function fetchData(retries = 0) {
+async function fetchData() {
     try {
         const response = await axios.get(apiUrl);
         const json = response.data;
@@ -36,29 +34,20 @@ async function fetchData(retries = 0) {
                 ultima_atualizacao: formatDate(new Date()) // Formata a data da última atualização
             };
 
-            // Salva os dados no arquivo
-            fs.writeFileSync(outputFilePath, JSON.stringify(dataToSave, null, 2));
-            console.clear();
-            console.log(`Dados salvos em ${outputFilePath}`);
+            // Usa edit-file para salvar os dados no arquivo
+            editFile('dados.json', JSON.stringify(dataToSave, null, 2), (err) => {
+                if (err) {
+                    console.error("Erro ao salvar dados:", err);
+                } else {
+                    console.clear();
+                    console.log(`Dados salvos em dados.json`);
+                }
+            });
         } else {
-            console.log("Sem dados disponíveis. Tentando novamente...");
-            if (retries < 5) {
-                console.log(`Tentativa ${retries + 1} de 5...`);
-                await fetchData(retries + 1); // Tenta novamente
-            } else {
-                console.log("Número máximo de tentativas atingido. Saindo do script.");
-                process.exit(1); // Sai do script após 5 tentativas
-            }
+            console.log("Sem dados disponíveis");
         }
     } catch (error) {
         console.error("Erro ao buscar os dados:", error.message);
-        if (retries < 5) {
-            console.log(`Tentativa ${retries + 1} de 5...`);
-            await fetchData(retries + 1); // Tenta novamente
-        } else {
-            console.log("Número máximo de tentativas atingido. Saindo do script.");
-            process.exit(1); // Sai do script após 5 tentativas
-        }
     }
 }
 

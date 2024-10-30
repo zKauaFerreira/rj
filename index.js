@@ -19,7 +19,7 @@ function formatDate(date) {
 }
 
 // Função para buscar os dados
-async function fetchData() {
+async function fetchData(retries = 0) {
     try {
         const response = await axios.get(apiUrl);
         const json = response.data;
@@ -41,41 +41,26 @@ async function fetchData() {
             console.clear();
             console.log(`Dados salvos em ${outputFilePath}`);
         } else {
-            console.log("Sem dados disponíveis");
+            console.log("Sem dados disponíveis. Tentando novamente...");
+            if (retries < 5) {
+                console.log(`Tentativa ${retries + 1} de 5...`);
+                await fetchData(retries + 1); // Tenta novamente
+            } else {
+                console.log("Número máximo de tentativas atingido. Saindo do script.");
+                process.exit(1); // Sai do script após 5 tentativas
+            }
         }
     } catch (error) {
         console.error("Erro ao buscar os dados:", error.message);
+        if (retries < 5) {
+            console.log(`Tentativa ${retries + 1} de 5...`);
+            await fetchData(retries + 1); // Tenta novamente
+        } else {
+            console.log("Número máximo de tentativas atingido. Saindo do script.");
+            process.exit(1); // Sai do script após 5 tentativas
+        }
     }
 }
 
-// Função para iniciar o cronômetro e buscar dados
-async function startCron() {
-    await fetchData(); // Executa imediatamente
-
-    // Cronômetro de 30 minutos (1800000 milissegundos)
-    const interval = 1800000; 
-    let timeRemaining = interval;
-
-    const timer = setInterval(() => {
-        timeRemaining -= 1000; // Decrementa 1 segundo
-
-        // Converte o tempo restante em minutos
-        const minutes = Math.floor(timeRemaining / 60000); // Tempo restante em minutos
-
-        // Mostra o tempo restante no terminal a cada 1 minuto
-        if (timeRemaining % 60000 === 0) {
-            console.clear();
-            console.log(`Próxima atualização em: ${minutes}m`);
-        }
-
-        // Quando o tempo se esgota, busca os dados novamente e reinicia o cronômetro
-        if (timeRemaining <= 0) {
-            fetchData(); // Busca os dados novamente
-            timeRemaining = interval; // Reinicia o cronômetro
-            console.log(); // Para nova linha após atualização
-        }
-    }, 1000);
-}
-
-// Inicia o cronômetro
-startCron();
+// Executa a busca de dados imediatamente
+fetchData();

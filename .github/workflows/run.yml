@@ -1,0 +1,24 @@
+name: Atualização a cada 30 minutos
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Roda a cada 30 minutos
+  workflow_dispatch: # Permite a execução manual
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checar código
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar script
+        run: node index.js

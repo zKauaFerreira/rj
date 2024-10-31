@@ -1,4 +1,4 @@
-const editFile = require("edit-file");
+const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 
@@ -8,7 +8,7 @@ const apiUrl = 'https://portal1.snirh.gov.br/server/rest/services/SGH/CotasRefer
 // Função para formatar a data
 function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês começa do zero
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
@@ -31,18 +31,24 @@ async function fetchData() {
             const dataToSave = {
                 Ult_Dado,
                 Data_ult_dado,
-                ultima_atualizacao: formatDate(new Date()) // Formata a data da última atualização
+                ultima_atualizacao: formatDate(new Date())
             };
 
-            // Usa edit-file para salvar os dados no arquivo
-            editFile('dados.json', JSON.stringify(dataToSave, null, 2), (err) => {
-                if (err) {
-                    console.error("Erro ao salvar dados:", err);
-                } else {
-                    console.clear();
-                    console.log(`Dados salvos em dados.json`);
-                }
-            });
+            // Carrega o conteúdo existente do dados.json, se houver
+            const filePath = path.resolve(__dirname, 'dados.json');
+            let existingData = {};
+
+            if (fs.existsSync(filePath)) {
+                const rawData = fs.readFileSync(filePath);
+                existingData = JSON.parse(rawData);
+            }
+
+            // Atualiza o objeto existente com os novos dados
+            const updatedData = { ...existingData, ...dataToSave };
+
+            // Salva o arquivo atualizado
+            fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 2));
+            console.log("Dados atualizados e salvos em dados.json");
         } else {
             console.log("Sem dados disponíveis");
         }

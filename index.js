@@ -1,8 +1,9 @@
 const axios = require('axios');
-const fs = require('fs');
 
 // URL da API
 const apiUrl = 'https://portal1.snirh.gov.br/server/rest/services/SGH/CotasReferencia2/MapServer/dynamicLayer/query?f=json&returnGeometry=false&spatialRel=esriSpatialRelIntersects&geometry=%7B"xmin"%3A-5704261.757328038%2C"ymin"%3A-3508025.0787798706%2C"xmax"%3A-5704204.429556822%2C"ymax"%3A-3507967.751008655%2C"spatialReference"%3A%7B"wkid"%3A102100%7D%7D&geometryType=esriGeometryEnvelope&inSR=102100&outFields=Data_ult_dado%2CUlt_Dado&outSR=102100&layer=%7B"source"%3A%7B"type"%3A"mapLayer"%2C"mapLayerId"%3A2%7D%7D';
+const githubApiUrl = 'https://api.github.com/repos/kauacodex/rj/contents/dados.json';
+const githubToken = process.env.GITHUB_TOKEN; // A chave de API do GitHub
 
 // Função para formatar a data
 function formatDate(date) {
@@ -32,9 +33,9 @@ async function fetchData(retries = 0) {
                 ultima_atualizacao: formatDate(new Date())
             };
 
-            // Salva os dados em dados.json
-            fs.writeFileSync('dados.json', JSON.stringify(dataToSave, null, 2));
-            console.log("Dados salvos em dados.json");
+            // Salva os dados no GitHub
+            const jsonString = JSON.stringify(dataToSave, null, 2);
+            await saveToGithub(jsonString);
         } else {
             throw new Error("Sem dados disponíveis.");
         }
@@ -48,6 +49,31 @@ async function fetchData(retries = 0) {
             process.exit(1);
         }
     }
+}
+
+// Função para salvar o JSON no GitHub
+async function saveToGithub(content) {
+    const shaResponse = await axios.get(githubApiUrl, {
+        headers: {
+            Authorization: `token ${githubToken}`,
+            Accept: 'application/vnd.github.v3+json'
+        }
+    }).catch(() => null);
+
+    const sha = shaResponse ? shaResponse.data.sha : null;
+
+    await axios.put(githubApiUrl, {
+        message: "Atualização de dados",
+        content: Buffer.from(content).toString('base64'),
+        sha: sha
+    }, {
+        headers: {
+            Authorization: `token ${githubToken}`,
+            Accept: 'application/vnd.github.v3+json'
+        }
+    });
+
+    console.log("Dados salvos em dados.json no repositório.");
 }
 
 // Executa a busca de dados imediatamente

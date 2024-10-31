@@ -17,7 +17,10 @@ function formatDate(date) {
 // Função para buscar os dados
 async function fetchData(retries = 0) {
     try {
+        console.log("Fazendo requisição para a API...");
         const response = await axios.get(apiUrl);
+        console.log("Resposta recebida:", response.data);
+
         const json = response.data;
 
         if (json && json.features && json.features.length > 0) {

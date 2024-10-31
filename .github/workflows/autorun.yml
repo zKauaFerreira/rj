@@ -21,7 +21,13 @@ jobs:
         run: npm install
 
       - name: Executar script e capturar saída
-        run: node index.js # Isso agora criará dados.json no diretório correto
+        id: run_script
+        run: |
+          node index.js
+          echo "Dados salvos em dados.json"
+          
+      - name: Listar arquivos no diretório
+        run: ls -l  # Lista os arquivos para verificar se dados.json foi criado
 
   update_data:
     runs-on: ubuntu-latest

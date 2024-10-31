@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Configurar fuso horário para São Paulo
+        run: |
+          echo "TZ=America/Sao_Paulo" >> $GITHUB_ENV  # Define o fuso horário
+
       - name: Instalar dependências
         run: npm install
 

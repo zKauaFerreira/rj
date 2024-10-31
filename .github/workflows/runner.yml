@@ -2,7 +2,7 @@ name: Auto Update!
 
 on:
   schedule:
-    - cron: '20,50 * * * *'  # Executa nos minutos 20 e 50 de cada hora
+    - cron: '14,46 * * * *'  # Executa nos minutos 20 e 50 de cada hora
   workflow_dispatch:  # Permite a execução manual do workflow
 
 jobs:

@@ -3,6 +3,7 @@ name: Atualização de Dados
 on:
   schedule:
     - cron: '0 */1 * * *'  # Executa a cada hora
+  workflow_dispatch:  # Permite a execução manual do workflow
 
 jobs:
   fetch_data:

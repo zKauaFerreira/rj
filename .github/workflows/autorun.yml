@@ -1,0 +1,41 @@
+name: Atualização a cada 30 minutos
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Roda a cada 30 minutos
+  workflow_dispatch: # Permite a execução manual
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checar código
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar script
+        run: node index.js
+
+  commit_data:
+    runs-on: ubuntu-latest
+    needs: fetch_data  # Espera o trabalho fetch_data terminar
+    steps:
+      - name: Checar código
+        uses: actions/checkout@v2
+
+      - name: Commit e push dados.json
+        run: |
+          git config --local user.email "kaua.codex@gmail.com"
+          git config --local user.name "kauacodex"
+          git add dados.json
+          git commit -m "Atualização de dados" || (echo "Nada para atualizar"; exit 0)
+          git push "https://${{ secrets.GH_PAT }}@github.com/kauacodex/rj.git" HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const jsonUrl = './home/runner/work/rj/rj/dados.json'; // URL do arquivo JSON gerado pelo Node.js
+  const jsonUrl = 'https://raw.githubusercontent.com/kauacodex/rj/refs/heads/main/dados.json'; // URL do arquivo JSON gerado pelo Node.js
 
   function fetchAndDisplayData() {
     fetch(jsonUrl)

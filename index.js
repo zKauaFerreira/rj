@@ -63,7 +63,7 @@ async function saveToGithub(content) {
     const sha = shaResponse ? shaResponse.data.sha : null;
 
     await axios.put(githubApiUrl, {
-        message: "Atualização as " + formatDate(new Date()),
+        message: "Atualização em: " + formatDate(new Date()),
         content: Buffer.from(content).toString('base64'),
         sha: sha
     }, {

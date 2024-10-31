@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Executar script e capturar saída
-        run: node index.js > dados.json
+        run: node index.js # Isso agora criará dados.json no diretório correto
 
   update_data:
     runs-on: ubuntu-latest
@@ -32,10 +32,16 @@ jobs:
 
       - name: Atualizar dados.json via API do GitHub
         run: |
-          FILE_CONTENT=$(cat dados.json)
-          echo "${FILE_CONTENT}" | jq -Rsa . > dados_base64.txt # Codifica o conteúdo em base64
-          BASE64_CONTENT=$(cat dados_base64.txt)
-          curl -X PUT -H "Authorization: token ${{ secrets.GH_PAT }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          -d "{\"message\": \"Atualização de dados\", \"content\": \"$BASE64_CONTENT\", \"sha\": \"$(git rev-parse HEAD:main:dados.json)\"}" \
-          https://api.github.com/repos/kauacodex/rj/contents/dados.json
+          # Verifica se o arquivo existe
+          if [ -f dados.json ]; then
+            FILE_CONTENT=$(cat dados.json)
+            echo "${FILE_CONTENT}" | jq -Rsa . > dados_base64.txt # Codifica o conteúdo em base64
+            BASE64_CONTENT=$(cat dados_base64.txt)
+            curl -X PUT -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "{\"message\": \"Atualização de dados\", \"content\": \"$BASE64_CONTENT\", \"sha\": \"$(git rev-parse HEAD:main:dados.json)\"}" \
+            https://api.github.com/repos/kauacodex/rj/contents/dados.json
+          else
+            echo "dados.json não encontrado, abortando a atualização."
+            exit 1
+          fi

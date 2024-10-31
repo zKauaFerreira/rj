@@ -20,14 +20,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Executar script e capturar saída
-        id: fetch_data
-        run: |
-          node index.js > output.json
-
-      - name: Salvar dados no arquivo JSON
-        run: |
-          cat output.json > dados.json
+      - name: Executar script
+        run: node index.js
 
   commit_data:
     runs-on: ubuntu-latest
@@ -44,5 +38,3 @@ jobs:
           git commit -m "Atualização de dados" || (echo "Nada para atualizar"; exit 0)
           git remote set-url origin "https://${{ secrets.GH_PAT }}@github.com/kauacodex/rj.git"
           git push origin HEAD:main
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}

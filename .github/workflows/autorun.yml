@@ -23,20 +23,19 @@ jobs:
       - name: Executar script e capturar saída
         run: node index.js > dados.json
 
-  commit_data:
+  update_data:
     runs-on: ubuntu-latest
     needs: fetch_data  # Espera o trabalho fetch_data terminar
     steps:
-      - name: Checar código
-        uses: actions/checkout@v2
+      - name: Instalar jq
+        run: sudo apt-get install jq
 
-      - name: Commit e push dados.json
+      - name: Atualizar dados.json via API do GitHub
         run: |
-          git config --local user.email "kaua.codex@gmail.com"
-          git config --local user.name "kauacodex"
-          git add dados.json
-          git commit -m "Atualização de dados" || (echo "Nada para atualizar"; exit 0)
-          git remote set-url origin "https://${{ secrets.GH_PAT }}@github.com/kauacodex/rj.git"
-          git push origin HEAD:main
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          FILE_CONTENT=$(cat dados.json)
+          echo "${FILE_CONTENT}" | jq -Rsa . > dados_base64.txt # Codifica o conteúdo em base64
+          BASE64_CONTENT=$(cat dados_base64.txt)
+          curl -X PUT -H "Authorization: token ${{ secrets.GH_PAT }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d "{\"message\": \"Atualização de dados\", \"content\": \"$BASE64_CONTENT\", \"sha\": \"$(git rev-parse HEAD:main:dados.json)\"}" \
+          https://api.github.com/repos/kauacodex/rj/contents/dados.json

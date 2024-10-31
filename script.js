@@ -42,5 +42,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   fetchAndDisplayData(); // Carrega os dados ao inicializar
-  setInterval(fetchAndDisplayData, 30000); // Atualiza os dados a cada 30 segundos
+  setInterval(fetchAndDisplayData, 30000); // Atualiza os dados a cada 20 segundos
 });

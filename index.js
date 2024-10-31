@@ -1,4 +1,5 @@
 const axios = require('axios');
+const fs = require('fs');
 
 // URL da API
 const apiUrl = 'https://portal1.snirh.gov.br/server/rest/services/SGH/CotasReferencia2/MapServer/dynamicLayer/query?f=json&returnGeometry=false&spatialRel=esriSpatialRelIntersects&geometry=%7B"xmin"%3A-5704261.757328038%2C"ymin"%3A-3508025.0787798706%2C"xmax"%3A-5704204.429556822%2C"ymax"%3A-3507967.751008655%2C"spatialReference"%3A%7B"wkid"%3A102100%7D%7D&geometryType=esriGeometryEnvelope&inSR=102100&outFields=Data_ult_dado%2CUlt_Dado&outSR=102100&layer=%7B"source"%3A%7B"type"%3A"mapLayer"%2C"mapLayerId"%3A2%7D%7D';
@@ -31,8 +32,9 @@ async function fetchData(retries = 0) {
                 ultima_atualizacao: formatDate(new Date())
             };
 
-            // Imprime os dados como JSON no formato de saída padrão
-            console.log(JSON.stringify(dataToSave, null, 2));
+            // Salva os dados em dados.json
+            fs.writeFileSync('dados.json', JSON.stringify(dataToSave, null, 2));
+            console.log("Dados salvos em dados.json");
         } else {
             throw new Error("Sem dados disponíveis.");
         }

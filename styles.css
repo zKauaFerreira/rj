@@ -135,7 +135,7 @@ body {
 
 #inundationAlert strong {
   color: #f5f6fa;
-  font-size: 4vw;
+  font-size: 1.25vw;
   margin-left: 0.3rem;
   text-shadow: 0 0 10px rgba(245, 246, 250, 0.6);
 }

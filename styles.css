@@ -1,70 +1,146 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
 
+/* Configurações Gerais */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 15px 40px rgba(75, 207, 250, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 50px rgba(75, 207, 250, 0.5);
+  }
+  100% {
+    box-shadow: 0 15px 40px rgba(75, 207, 250, 0.3);
+  }
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: url('https://s2-g1.glbimg.com/NVjOs2_txt8NXMyKxLSsi_XosEM=/0x0:2048x1365/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/1/F/fKO46LR9m2MQxwTJUXFw/50702319337-76b1fa5911-k.jpg') no-repeat center center fixed;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url('https://s2-g1.glbimg.com/NVjOs2_txt8NXMyKxLSsi_XosEM=/0x0:2048x1365/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/1/F/fKO46LR9m2MQxwTJUXFw/50702319337-76b1fa5911-k.jpg') no-repeat center center fixed;
   background-size: cover;
-  backdrop-filter: blur(6px) saturate(180%) contrast(110%) brightness(70%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  backdrop-filter: blur(8px) saturate(150%) contrast(110%);
+  color: #f5f6fa;
   user-select: none;
 }
 
+/* Estilo Glassmorphism para a Caixa de Dados */
 .container {
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: #32cd32 1px solid;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  user-select: none;
+  background: rgba(20, 25, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 2.8rem 3.5rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(75, 207, 250, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeIn 0.8s ease-out, pulseGlow 3s linear infinite;
 }
 
-
-p {
-  font-size: 1.1em;
-  color: #444;
-  line-height: 1.6;
-  user-select: none;
-}
-
+/* Estilo do Título com Ícone */
 #Ult_Dado_Texto {
-  font-family: Sora;
-  color: #444;
-  margin-bottom: -1.3vw;
-  margin-top: -0.4vw;
-  font-size: 1.9em;
-  user-select: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f5f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 10px rgba(245, 246, 250, 0.5);
 }
 
+#Ult_Dado_Texto i {
+  font-size: 1.6rem;
+  color: #4bcffa;
+  text-shadow: 0 0 15px rgba(75, 207, 250, 0.8);
+}
+
+/* Estilo Principal do Número com Destaque */
 #Ult_Dado_Numero {
-  font-size: 6.2em;
-  font-family: Sora;
-  color: #32cd32;
-  display: inline;
-  user-select: none;
+  font-size: 6.5rem;
+  font-weight: 700;
+  color: #4bcffa;
+  margin: 0.3rem 0;
+  text-shadow: 0 0 20px rgba(75, 207, 250, 0.6);
+
 }
 
+/* Estilo da Data com Ícone */
 #Data_ult_dado {
-  font-size: 1.41em;
-  font-family: Sora;
-  color: #444;
-  margin-top: -1vw;
-  margin-bottom: -0.2vw;
-  user-select: none;
+  font-size: 1.1rem;
+  color: #dcdde1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+#Data_ult_dado i {
+  font-size: 1.3rem;
+  color: #4bcffa;
+  text-shadow: 0 0 10px rgba(75, 207, 250, 0.6);
+}
+
+/* Estilo do Alerta de Inundação */
+.alert-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(255, 71, 87, 0.2);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+
+}
+
+.alert-icon {
+  font-size: 1.4rem;
+  color: #ff4757;
+  animation: shake 3s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
 }
 
 #inundationAlert {
-  margin-right: 0.521vw;
-  font-style: normal;
-  font-size: 1.4em;
-  color: #444;
-  margin-bottom: 2vw;
-  user-select: none;
+  font-size: 1.2rem;
+  color: #ff4757;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(255, 71, 87, 0.4);
+}
+
+#inundationAlert strong {
+  color: #f5f6fa;
+  font-size: 4vw;
+  margin-left: 0.3rem;
+  text-shadow: 0 0 10px rgba(245, 246, 250, 0.6);
+}
+
+/* Ícones */
+.fas, .far {
+  margin-right: 0.3rem;
 }

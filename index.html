@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nível do Rio Jacuí</title>
   <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha384-5e2ESR8Ycmos6g3gAKr1Jvwye8sW4U1u/cAKulfVJnkakCcMqhOudbtPnvJ+nbv7"
+    crossorigin="anonymous"
+  />
 </head>
 <body>
   <div class="container">
-    <p id="Ult_Dado_Texto">Último dado:</p>
+    <p id="Ult_Dado_Texto"><i class="fas fa-water" ></i> Último dado:</p>
     <p id="Ult_Dado_Numero">-</p>
-    <p id="Data_ult_dado">Carregando...</p>
+    <p id="Data_ult_dado"><i class="far fa-clock"></i> Carregando...</p>
     <br />
-    🚨
-    <i id="inundationAlert">Cota de inundação: 3,60</i>
+    <div class="alert-container">
+      <i class="fas fa-exclamation-triangle alert-icon"></i>
+      <span id="inundationAlert">Cota de inundação: <strong>3,60m</strong></span>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

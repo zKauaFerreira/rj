@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const jsonUrl = 'https://raw.githubusercontent.com/kauacodex/rj/refs/heads/main/dados.json'; // URL do arquivo JSON gerado pelo Node.js
 
   function fetchAndDisplayData() {
-    fetch(jsonUrl)
+    // Adiciona um parâmetro de timestamp para evitar cache
+    const urlComTimestamp = `${jsonUrl}?t=${new Date().getTime()}`;
+
+    fetch(urlComTimestamp)
       .then((response) => {
         if (!response.ok) throw new Error("Erro ao carregar os dados do arquivo.");
         return response.json();
@@ -14,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const formattedDate = formatDate(Data_ult_dado);
 
         document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
-        document.getElementById("Data_ult_dado").innerText = `Em: ${formattedDate}`;
+        document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
       })
       .catch((error) => {
         console.error("Erro ao buscar os dados:", error);
@@ -41,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return `${day}/${month}/${year} - ${hours}:${minutes}`;
   }
 
-  fetchAndDisplayData(); // Carrega os dados ao inicializar
-  setInterval(fetchAndDisplayData, 30000); // Atualiza os dados a cada 20 segundos
+  // Força uma atualização imediata ao carregar a página
+  fetchAndDisplayData();
+  
+  // Continua atualizando a cada 30 segundos
+  setInterval(fetchAndDisplayData, 30000);
 });

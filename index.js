@@ -41,7 +41,7 @@ async function fetchData(retries = 0) {
         }
     } catch (error) {
         console.error("Erro aguardando 5 minutos:", error.message);
-        if (retries < 5) {
+        if (retries < 10) {
             await new Promise(resolve => setTimeout(resolve, 5 * 60 * 1000)); // Aguarda 5 minutos
             await fetchData(retries + 1);
         } else {

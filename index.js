@@ -30,7 +30,8 @@ async function fetchData(retries = 0) {
             const dataToSave = {
                 Ult_Dado,
                 Data_ult_dado,
-                ultima_atualizacao: formatDate(new Date())
+                ultima_busca_api: formatDate(new Date()),
+                ultimo_dado_api: formatDate(new Date(Data_ult_dado))
             };
 
             // Salva os dados no GitHub

@@ -48,7 +48,11 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 <div style="margin-left: 15em;">
 Desenvolvi o sistema para coletar dados em tempo real da estação de monitoramento localizada no Rio Jacuí através da API da ANA. Os dados são processados e exibidos em uma interface moderna com efeito glassmorphism, apresentando:
 
+&nbsp;
 
+&nbsp;
+
+&nbsp;
 
 - 📏 Nível atual do rio em metros
 - ⏰ Data e hora da última medição  

@@ -43,7 +43,7 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 
 ## 🚀 Como Funciona
 
-<img align="left" src="https://cdn-icons-png.flaticon.com/512/616/616711.png" width="80" alt="Onda">
+<img align="left" src="https://cdn-icons-png.flaticon.com/512/616/616711.png" width="77" alt="Onda">
 
 <div style="margin-left: 15em;">
 Desenvolvi o sistema para coletar dados em tempo real da estação de monitoramento localizada no Rio Jacuí através da API da ANA. Os dados são processados e exibidos em uma interface moderna com efeito glassmorphism, apresentando:

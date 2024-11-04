@@ -81,7 +81,6 @@ body {
   color: #4bcffa;
   margin: 0.3rem 0;
   text-shadow: 0 0 20px rgba(75, 207, 250, 0.6);
-
 }
 
 /* Estilo da Data com Ícone */
@@ -111,7 +110,6 @@ body {
   background: rgba(255, 71, 87, 0.2);
   padding: 0.8rem 1.2rem;
   border-radius: 12px;
-
 }
 
 .alert-icon {
@@ -144,7 +142,21 @@ body {
 .fas, .far {
   margin-right: 0.3rem;
 }
+
 @media screen and (max-width: 449px) {
+  .container {
+    margin: 0 20px;
+    padding: 2rem;
+  }
+  
+  #Ult_Dado_Numero {
+    font-size: 6.5rem;
+  }
+  
+  #Ult_Dado_Texto {
+    font-size: 1.8rem;
+  }
+  
   .alert-icon {
     font-size: 2.8rem;
     margin-right: -1.1rem;

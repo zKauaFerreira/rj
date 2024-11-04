@@ -51,20 +51,8 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
   </div>
 </div>
 
-<<<<<<< HEAD
-=======
-<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto; gap: 30px;">
-  <span>HTML5</span>
-  <span>CSS3</span>
-  <span>JavaScript</span>
-  <span>GitHub</span>
->>>>>>> 63acc03f571b82fc1e9da17840d5ca3c0cd964ec
 </div>
-<<<<<<< HEAD
-=======
 
-</div>
->>>>>>> 63acc03f571b82fc1e9da17840d5ca3c0cd964ec
 
 
 

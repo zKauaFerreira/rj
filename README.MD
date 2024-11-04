@@ -1,4 +1,4 @@
-# 🌊 Sistema de Monitoramento do Rio Jacuí
+# 🌊 Sistema de Monitoramento do Rio Jacuí.
 
 <div align="center">
 
@@ -12,13 +12,13 @@
 
 
 
-## 📋 Sobre o Projeto
+## 📋 Sobre o Projeto:
 
 <img align="right" src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-ocean-wave-symbol-sea-water-png-image_4962256.png" width="80" alt="Onda">
 
 Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí utilizando os dados disponibilizados pela API da Agência Nacional de Águas e Saneamento Básico (ANA). O projeto exibe de forma clara e objetiva o nível atual do rio para consulta pública.
 
-### ✨ Características Principais
+### ✨ Características Principais:
 
 - 🔄 Atualização automática dos dados
 - 📱 Design responsivo e moderno com efeito glassmorphism
@@ -26,7 +26,7 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 - 📊 Exibição precisa dos dados
 
 
-## 🛠️ Tecnologias Utilizadas 
+## 🛠️ Tecnologias Utilizadas:
 
 <table align="center">
   <tr>
@@ -61,7 +61,7 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 
 
 
-## 🚀 Como Funciona
+## 🚀 Como Funciona?
 
 <img align="left" src="https://cdn-icons-png.flaticon.com/512/616/616711.png" width="73" alt="Onda">
 
@@ -74,7 +74,7 @@ Desenvolvi o sistema para coletar dados em tempo real da estação de monitorame
 - 🔄 Atualização automática
 </div>
 
-## 🙏 Agradecimentos
+## 🙏 Agradecimentos!
 
 <div align="left">
 
@@ -96,7 +96,7 @@ Os dados disponibilizados pela ANA são essenciais para este projeto, permitindo
 
 ---
 <p align="center">
-  Desenvolvido com 💙 por Kauã Ferreira.
+  Desenvolvido com 💙 por Kauã Ferreira!
 </p>
 
 </div>

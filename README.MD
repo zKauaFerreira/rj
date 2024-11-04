@@ -5,7 +5,7 @@
     <img src="https://img.shields.io/badge/Status-Ativo-4CAF50?style=for-the-badge&logo=checkmarx&logoColor=white"/>
     <img src="https://img.shields.io/badge/Licença-MIT-2196F3?style=for-the-badge&logo=bookstack&logoColor=white"/>
     <img src="https://img.shields.io/badge/Versão-2.0-FF9800?style=for-the-badge&logo=git&logoColor=white"/>
-    <img src="https://img.shields.io/badge/Updates-Automáticos-00BCD4?style=for-the-badge&logo=clockify&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Updates-Automáticos-c542f5?style=for-the-badge&logo=clockify&logoColor=white"/>
   </p>
 </div>
 

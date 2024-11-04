@@ -58,7 +58,7 @@ Desenvolvi o sistema para coletar dados em tempo real da estação de monitorame
 
 <div align="left">
 
-<img align="right" src="https://cdn-icons-png.flaticon.com/512/3442/3442663.png" width="100" alt="Gota d'água" style="margin-right: 5.13em;">
+<img align="right" src="https://cdn-icons-png.flaticon.com/512/3442/3442663.png" width="150" alt="Gota d'água" style="margin-right: 5.13em;">
 
 Agradeço à **Agência Nacional de Águas e Saneamento Básico (ANA)** 💧 por disponibilizar publicamente a API que utilizo neste projeto. Através dos dados fornecidos, consigo:
 

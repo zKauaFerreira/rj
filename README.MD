@@ -30,25 +30,25 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 
 <table align="center">
   <tr>
-    <td align="center" width="150">
+    <td align="center" width="180">
       <a href="https://html.spec.whatwg.org/">
         <img src="https://skillicons.dev/icons?i=html" alt="HTML5" width="60" height="60">
         <br>HTML5
       </a>
     </td>
-    <td align="center" width="150">
+    <td align="center" width="180">
       <a href="https://www.w3.org/Style/CSS/">
         <img src="https://skillicons.dev/icons?i=css" alt="CSS3" width="60" height="60">
         <br>CSS3
       </a>
     </td>
-    <td align="center" width="150">
+    <td align="center" width="180">
       <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript">
         <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" width="60" height="60">
         <br>JavaScript
       </a>
     </td>
-    <td align="center" width="150">
+    <td align="center" width="180">
       <a href="https://github.com/">
         <img src="https://skillicons.dev/icons?i=github" alt="GitHub" width="60" height="60">
         <br>GitHub

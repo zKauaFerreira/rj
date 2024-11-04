@@ -50,9 +50,6 @@ Desenvolvi o sistema para coletar dados em tempo real da estação de monitorame
 
 &nbsp;
 
-&nbsp;
-
-&nbsp;
 
 - 📏 Nível atual do rio em metros
 - ⏰ Data e hora da última medição  

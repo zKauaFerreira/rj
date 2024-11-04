@@ -1,1 +1,81 @@
-# Rio Jacuí
+# 🌊 Sistema de Monitoramento do Rio Jacuí
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/Status-Ativo-4CAF50?style=flat-square&logo=statuspage&logoColor=white" alt="Status do Projeto"/>
+<img src="https://img.shields.io/badge/Licença-MIT-2196F3?style=flat-square&logo=license&logoColor=white" alt="Licença"/>
+<img src="https://img.shields.io/badge/Versão-V2.0-FF9800?style=flat-square&logo=v&logoColor=white" alt="Versão"/>
+<img src="https://img.shields.io/badge/Updates-Automáticos-00BCD4?style=flat-square&logo=clockify&logoColor=white" alt="Atualizações"/>
+<a href="https://pt.wikipedia.org/wiki/Rio_Jacu%C3%AD"><img src="https://img.shields.io/badge/Rio_Jacuí-Saiba_Mais-03A9F4?style=flat-square&logo=wikipedia&logoColor=white" alt="Rio Jacuí"/></a>
+
+</div>
+
+
+
+## 📋 Sobre o Projeto
+
+<img align="right" src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-ocean-wave-symbol-sea-water-png-image_4962256.png" width="80" alt="Onda">
+
+Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí utilizando os dados disponibilizados pela API da Agência Nacional de Águas e Saneamento Básico (ANA). O projeto exibe de forma clara e objetiva o nível atual do rio para consulta pública.
+
+### ✨ Características Principais
+
+- 🔄 Atualização automática dos dados
+- 📱 Design responsivo e moderno com efeito glassmorphism
+- 💻 Interface limpa e minimalista
+- 📊 Exibição precisa dos dados
+
+## 🛠️ Tecnologias Utilizadas
+<div align="center" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0px; justify-items: center; align-items: center; justify-content: center; text-align: center; margin-bottom: -2.1em">
+
+[![HTML5](https://skillicons.dev/icons?i=html)](https://html.spec.whatwg.org/)
+<BR>HTML5
+
+[![CSS3](https://skillicons.dev/icons?i=css)](https://www.w3.org/Style/CSS/)
+<BR>CSS3
+
+[![JavaScript](https://skillicons.dev/icons?i=js)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+<BR>JavaScript
+
+[![GitHub](https://skillicons.dev/icons?i=github)](https://github.com/)
+<BR>GitHub
+</div>
+
+## 🚀 Como Funciona
+
+<img align="left" src="https://cdn-icons-png.flaticon.com/512/616/616711.png" width="100" alt="Onda">
+
+<div style="margin-left: 9em;">
+Desenvolvi o sistema para coletar dados em tempo real da estação de monitoramento localizada no Rio Jacuí através da API da ANA. Os dados são processados e exibidos em uma interface moderna com efeito glassmorphism, apresentando:
+
+- 📏 Nível atual do rio em metros
+- ⏰ Data e hora da última medição  
+- 🔄 Atualização automática
+</div>
+
+## 🙏 Agradecimentos
+
+<div align="left">
+
+<img align="right" src="https://cdn-icons-png.flaticon.com/512/3442/3442663.png" width="100" alt="Gota d'água" style="margin-right: 2.13em;">
+
+Agradeço à **Agência Nacional de Águas e Saneamento Básico (ANA)** 💧 por disponibilizar publicamente a API que utilizo neste projeto. Através dos dados fornecidos, consigo:
+
+- 📊 Acessar dados precisos e confiáveis
+- ⚡ Realizar atualizações em tempo real
+- 🌊 Monitorar constantemente o Rio Jacuí
+- 🤝 Contribuir com a transparência pública
+
+Os dados disponibilizados pela ANA são essenciais para este projeto, permitindo que eu mantenha minha comunidade sempre bem informada sobre as condições do Rio Jacuí. 🌟
+<p align="center">
+  <a href="https://www.gov.br/ana/pt-br">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Logotipo_ANA_-_Agência_Nacional_de_Águas_e_Saneamento_Básico.png" alt="ANA" width="300">
+  </a>
+</p>
+
+---
+<p align="center">
+  Desenvolvido com 💙 por Kauã Ferreira.
+</p>
+
+</div>

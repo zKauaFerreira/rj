@@ -1,13 +1,23 @@
 # 🌊 Sistema de Monitoramento do Rio Jacuí.
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <div align="center">
-
-<img src="https://img.shields.io/badge/Status-Ativo-4CAF50?style=flat-square&logo=statuspage&logoColor=white" alt="Status do Projeto"/>
-<img src="https://img.shields.io/badge/Licença-MIT-2196F3?style=flat-square&logo=license&logoColor=white" alt="Licença"/>
-<img src="https://img.shields.io/badge/Versão-V2.0-FF9800?style=flat-square&logo=v&logoColor=white" alt="Versão"/>
-<img src="https://img.shields.io/badge/Updates-Automáticos-00BCD4?style=flat-square&logo=clockify&logoColor=white" alt="Atualizações"/>
-<a href="https://pt.wikipedia.org/wiki/Rio_Jacu%C3%AD"><img src="https://img.shields.io/badge/Rio_Jacuí-Saiba_Mais-03A9F4?style=flat-square&logo=wikipedia&logoColor=white" alt="Rio Jacuí"/></a>
-
+  <p>
+    <span style="background: linear-gradient(45deg, #4CAF50, #45a049); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
+      <i class="fas fa-check-circle"></i> Status: Ativo
+    </span>
+    <span style="background: linear-gradient(45deg, #2196F3, #1976D2); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
+      <i class="fas fa-file-contract"></i> Licença MIT
+    </span>
+    <span style="background: linear-gradient(45deg, #FF9800, #F57C00); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
+      <i class="fas fa-code-branch"></i> Versão 2.0
+    </span>
+    <span style="background: linear-gradient(45deg, #00BCD4, #0097A7); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
+      <i class="fas fa-sync-alt"></i> Updates Automáticos
+    </span>
+  </p>
 </div>
 
 

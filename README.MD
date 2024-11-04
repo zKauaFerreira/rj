@@ -28,19 +28,23 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 
 
 <div align="center">
-<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 200px auto; padding: 20px 0;">
+
+### 🛠️ Tecnologias Utilizadas
+
+<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto; padding: 20px 0; gap: 30px;">
   <a href="https://html.spec.whatwg.org/"><img src="https://skillicons.dev/icons?i=html" alt="HTML5"></a>
   <a href="https://www.w3.org/Style/CSS/"><img src="https://skillicons.dev/icons?i=css" alt="CSS3"></a>
   <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript"></a>
   <a href="https://github.com/"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></a>
 </div>
 
-<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto;">
+<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto; gap: 30px;">
   <span>HTML5</span>
   <span>CSS3</span>
   <span>JavaScript</span>
   <span>GitHub</span>
 </div>
+
 </div>
 
 

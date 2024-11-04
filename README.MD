@@ -26,32 +26,37 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 - 📊 Exibição precisa dos dados
 
 
-## 🛠️ Tecnologias Utilizadas
-<div align="center">
+## 🛠️ Tecnologias Utilizadas 
 
-<div style="display: flex; justify-content: space-between; width: 100%; max-width: 600px; margin: 0 auto; padding: 20px 0;">
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <a href="https://html.spec.whatwg.org/"><img src="https://skillicons.dev/icons?i=html" alt="HTML5"></a>
-    <span>HTML5</span>
-  </div>
-  
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <a href="https://www.w3.org/Style/CSS/"><img src="https://skillicons.dev/icons?i=css" alt="CSS3"></a>
-    <span>CSS3</span>
-  </div>
-  
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript"></a>
-    <span>JavaScript</span>
-  </div>
-  
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <a href="https://github.com/"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></a>
-    <span>GitHub</span>
-  </div>
-</div>
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://html.spec.whatwg.org/">
+        <img src="https://skillicons.dev/icons?i=html" alt="HTML5">
+        <br>HTML5
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.w3.org/Style/CSS/">
+        <img src="https://skillicons.dev/icons?i=css" alt="CSS3">
+        <br>CSS3
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript">
+        <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+        <br>JavaScript
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/">
+        <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
+        <br>GitHub
+      </a>
+    </td>
+  </tr>
+</table>
 
-</div>
 
 
 

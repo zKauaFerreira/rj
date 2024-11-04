@@ -1,22 +1,11 @@
 # 🌊 Sistema de Monitoramento do Rio Jacuí.
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <div align="center">
   <p>
-    <span style="background: linear-gradient(45deg, #4CAF50, #45a049); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
-      <i class="fas fa-check-circle"></i> Status: Ativo
-    </span>
-    <span style="background: linear-gradient(45deg, #2196F3, #1976D2); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
-      <i class="fas fa-file-contract"></i> Licença MIT
-    </span>
-    <span style="background: linear-gradient(45deg, #FF9800, #F57C00); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
-      <i class="fas fa-code-branch"></i> Versão 2.0
-    </span>
-    <span style="background: linear-gradient(45deg, #00BCD4, #0097A7); padding: 8px 16px; border-radius: 20px; color: white; margin: 0 8px;">
-      <i class="fas fa-sync-alt"></i> Updates Automáticos
-    </span>
+    <img src="https://img.shields.io/badge/Status-Ativo-4CAF50?style=for-the-badge&logo=checkmarx&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Licença-MIT-2196F3?style=for-the-badge&logo=bookstack&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Versão-2.0-FF9800?style=for-the-badge&logo=git&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Updates-Automáticos-00BCD4?style=for-the-badge&logo=clockify&logoColor=white"/>
   </p>
 </div>
 

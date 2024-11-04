@@ -24,18 +24,23 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 - 📱 Design responsivo e moderno com efeito glassmorphism
 - 💻 Interface limpa e minimalista
 - 📊 Exibição precisa dos dados
-<div align="center">
-<a href="https://html.spec.whatwg.org/"><img src="https://skillicons.dev/icons?i=html" alt="HTML5" style="margin: 0 20px;"></a>
-<a href="https://www.w3.org/Style/CSS/"><img src="https://skillicons.dev/icons?i=css" alt="CSS3" style="margin: 0 20px;"></a>
-<a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript" style="margin: 0 20px;"></a>
-<a href="https://github.com/"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" style="margin: 0 20px;"></a>
 
-<p>
-  <span style="margin: 0 20px;">HTML5</span>
-  <span style="margin: 0 20px;">CSS3</span>
-  <span style="margin: 0 20px;">JavaScript</span>
-  <span style="margin: 0 20px;">GitHub</span>
-</p>
+
+
+<div align="center">
+<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto; padding: 20px 0;">
+  <a href="https://html.spec.whatwg.org/"><img src="https://skillicons.dev/icons?i=html" alt="HTML5"></a>
+  <a href="https://www.w3.org/Style/CSS/"><img src="https://skillicons.dev/icons?i=css" alt="CSS3"></a>
+  <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript"></a>
+  <a href="https://github.com/"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></a>
+</div>
+
+<div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 600px; margin: 0 auto;">
+  <span>HTML5</span>
+  <span>CSS3</span>
+  <span>JavaScript</span>
+  <span>GitHub</span>
+</div>
 </div>
 
 

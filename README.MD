@@ -93,7 +93,7 @@ Os dados disponibilizados pela ANA são essenciais para este projeto, permitindo
   </a>
 </p>
 
----
+
 <p align="center">
   Desenvolvido com 💙 por Kauã Ferreira!
 </p>

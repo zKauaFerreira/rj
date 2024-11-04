@@ -25,20 +25,9 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
 - 💻 Interface limpa e minimalista
 - 📊 Exibição precisa dos dados
 
-## 🛠️ Tecnologias Utilizadas
-<div align="center" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0px; justify-items: center; align-items: center; justify-content: center; text-align: center; margin-bottom: -2.1em">
+[![HTML5](https://skillicons.dev/icons?i=html)](https://html.spec.whatwg.org/) [![CSS3](https://skillicons.dev/icons?i=css)](https://www.w3.org/Style/CSS/) [![JavaScript](https://skillicons.dev/icons?i=js)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) [![GitHub](https://skillicons.dev/icons?i=github)](https://github.com/)
 
-[![HTML5](https://skillicons.dev/icons?i=html)](https://html.spec.whatwg.org/)
-<BR>HTML5
-
-[![CSS3](https://skillicons.dev/icons?i=css)](https://www.w3.org/Style/CSS/)
-<BR>CSS3
-
-[![JavaScript](https://skillicons.dev/icons?i=js)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-<BR>JavaScript
-
-[![GitHub](https://skillicons.dev/icons?i=github)](https://github.com/)
-<BR>GitHub
+HTML5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CSS3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JavaScript &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub
 </div>
 
 ## 🚀 Como Funciona

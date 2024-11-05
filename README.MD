@@ -53,6 +53,12 @@ Desenvolvi este sistema web que monitora em tempo real o nível do Rio Jacuí ut
         <br>GitHub
       </a>
     </td>
+    <td align="center" width="180">
+      <a href="https://nodejs.org/">
+        <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" width="60" height="60">
+        <br>Node.js
+      </a>
+    </td>
   </tr>
 </table>
 

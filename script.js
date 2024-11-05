@@ -113,19 +113,36 @@ document.addEventListener("DOMContentLoaded", function() {
         const jsonData = JSON.parse(atob(data.content));
         const Ult_Dado = jsonData.Ult_Dado;
         const Data_ult_dado = jsonData.Data_ult_dado;
-        const ultima_busca_api = jsonData.ultima_busca_api; // Capture the last API fetch
+        const ultima_busca_api = jsonData.ultima_busca_api;
 
-        // Check if the last fetch date has changed
-        if (lastFetchTime !== ultima_busca_api) {
-          // If the last fetch has changed, update the cookie
-          setCookie('ultima_busca_api', ultima_busca_api, 1); // Set cookie to expire in 1 day
+        // Se não existir nenhum cookie (primeira visita)
+        if (!lastFetchTime && !lastDado && !lastDataDado) {
+          // Atualiza os cookies
+          setCookie('ultima_busca_api', ultima_busca_api, 1);
           setCookie('ult_dado', Ult_Dado, 1);
           setCookie('data_ult_dado', Data_ult_dado, 1);
 
-          // Show notification first
+          // Atualiza os dados imediatamente sem notificação
+          const formattedDado = formatUltDado(Ult_Dado);
+          const formattedDate = formatDate(Data_ult_dado);
+
+          document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
+          document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
+          
+          console.clear();
+          console.log("Primeira visita - dados carregados com sucesso!");
+        }
+        // Se já existir cookie e houver nova versão
+        else if (lastFetchTime !== ultima_busca_api) {
+          // Atualiza os cookies
+          setCookie('ultima_busca_api', ultima_busca_api, 1);
+          setCookie('ult_dado', Ult_Dado, 1);
+          setCookie('data_ult_dado', Data_ult_dado, 1);
+
+          // Mostra notificação
           showNotification();
 
-          // Update the data after 5 seconds
+          // Atualiza os dados após 5 segundos
           setTimeout(() => {
             const formattedDado = formatUltDado(Ult_Dado);
             const formattedDate = formatDate(Data_ult_dado);
@@ -137,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Informações atualizadas com sucesso!");
           }, 5000);
         } else if (lastDado && lastDataDado) {
-          // Use the last values from the cookies if there is no new version
+          // Usa os valores dos cookies se não houver nova versão
           const formattedDado = formatUltDado(lastDado);
           const formattedDate = formatDate(lastDataDado);
 
@@ -149,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       .catch((error) => {
         console.error("Erro ao buscar os dados:", error);
-        // Don't display the error in the interface when there is a new version
       });
   }
 

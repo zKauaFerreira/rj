@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
   const jsonUrl = 'https://api.github.com/repos/kauacodex/rj/contents/dados.json';
 
-  // Function to get a cookie by name
+  // Função para obter um cookie pelo nome
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
-    return null; // Return null if cookie doesn't exist
+    return null; // Retorna null se o cookie não existir
   }
 
-  // Function to set a cookie
+  // Função para definir um cookie
   function setCookie(name, value, days) {
     const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // Expires in days
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // Expira em dias
     const expires = "expires=" + d.toUTCString();
-    document.cookie = `${name}=${value}; ${expires}; path=/`; // Set the cookie
+    document.cookie = `${name}=${value}; ${expires}; path=/`; // Define o cookie
   }
 
-  // Function to show the notification with progress bar
+  // Função para mostrar a notificação
   function showNotification() {
-    // Create the notification element
+    // Criar o elemento da notificação
     const notification = document.createElement("div");
     notification.style.position = "fixed";
-    notification.style.top = "-100px"; // Start outside the screen
+    notification.style.top = "-100px"; // Começa fora da tela
     notification.style.left = "50%";
     notification.style.transform = "translateX(-50%)";
     notification.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
@@ -38,21 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
     notification.style.textAlign = "center";
     notification.style.transition = "top 0.5s ease-out";
 
-    // Add the text
+    // Adicionar o texto
     const text = document.createElement("div");
-    text.textContent = "Uma nova versão foi detectada! Atualizando...";
+    text.textContent = "Buscando novos dados no nível do Rio Jacuí...";
     text.style.marginBottom = "10px";
     text.style.fontSize = window.innerWidth <= 449 ? "14px" : "16px";
     notification.appendChild(text);
 
-    // Add the progress bar container
+    // Adicionar o contêiner da barra de progresso
     const progressContainer = document.createElement("div");
     progressContainer.style.position = "relative";
     progressContainer.style.width = "100%";
     progressContainer.style.height = window.innerWidth <= 449 ? "3px" : "4px";
     progressContainer.style.marginTop = "10px";
 
-    // Add the progress bar
+    // Adicionar a barra de progresso
     const progressBar = document.createElement("div");
     progressBar.style.width = "100%";
     progressBar.style.height = "100%";
@@ -70,105 +70,95 @@ document.addEventListener("DOMContentLoaded", function() {
     progressContainer.appendChild(progressBar);
     notification.appendChild(progressContainer);
 
-    // Add to the body
+    // Adicionar ao corpo
     document.body.appendChild(notification);
 
-    // Animate the notification entry
+    // Animar a entrada da notificação
     requestAnimationFrame(() => {
       notification.style.top = "20px";
     });
 
-    // Start the progress bar animation
+    // Iniciar a animação da barra de progresso
     setTimeout(() => {
-      progress.style.width = "0"; // Reduce the width to 0 over 5 seconds
+      progress.style.width = "0"; // Reduz a largura para 0 durante 5 segundos
     }, 100);
 
-    // Remove the notification after 5 seconds
+    // Remover a notificação após 5 segundos
     setTimeout(() => {
-      notification.style.top = "-100px"; // Animate the exit
+      notification.style.top = "-100px"; // Animar a saída
       setTimeout(() => {
         notification.remove();
       }, 500);
     }, 5000);
   }
 
-  // Function to fetch and display data
+  // Função para buscar e exibir dados
   function fetchAndDisplayData() {
-    // Retrieve the last API fetch timestamp stored in cookies
+    // Recuperar o horário da última verificação (cookie)
     const lastFetchTime = getCookie('ultima_busca_api');
+    const currentTime = new Date().getTime();
 
-    // Retrieve the last data values from cookies
-    const lastDado = getCookie('ult_dado');
-    const lastDataDado = parseInt(getCookie('data_ult_dado')); // Convert timestamp string to number
-
-    fetch(jsonUrl, {
-      headers: { Accept: "application/vnd.github.v3+json" },
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("Erro ao carregar os dados do arquivo.");
-        return response.json();
+    // Se não tiver horário de última busca ou se passaram mais de 60 segundos
+    if (!lastFetchTime || currentTime - lastFetchTime >= 60000) {
+      // Fazer a requisição para verificar se há atualizações
+      fetch(jsonUrl, {
+        headers: { Accept: "application/vnd.github.v3+json" },
       })
-      .then((data) => {
-        // Decode the JSON content from Base64 to a string
-        const jsonData = JSON.parse(atob(data.content));
-        const Ult_Dado = jsonData.Ult_Dado;
-        const Data_ult_dado = jsonData.Data_ult_dado;
-        const ultima_busca_api = jsonData.ultima_busca_api;
+        .then((response) => {
+          if (!response.ok) throw new Error("Erro ao carregar os dados do arquivo.");
+          return response.json();
+        })
+        .then((data) => {
+          // Decodificar o conteúdo JSON do Base64
+          const jsonData = JSON.parse(atob(data.content));
+          const Ult_Dado = jsonData.Ult_Dado;
+          const Data_ult_dado = jsonData.Data_ult_dado;
+          const ultima_busca_api = jsonData.ultima_busca_api;
 
-        // Se não existir nenhum cookie (primeira visita)
-        if (!lastFetchTime && !lastDado && !lastDataDado) {
-          // Atualiza os cookies
-          setCookie('ultima_busca_api', ultima_busca_api, 1);
-          setCookie('ult_dado', Ult_Dado, 1);
-          setCookie('data_ult_dado', Data_ult_dado, 1);
-
-          // Atualiza os dados imediatamente sem notificação
-          const formattedDado = formatUltDado(Ult_Dado);
-          const formattedDate = formatDate(Data_ult_dado);
-
-          document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
-          document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
+          // Comparar os dados do JSON com os dados armazenados nos cookies
+          const lastDado = getCookie('ult_dado');
+          const lastDataDado = getCookie('data_ult_dado');
           
-          console.clear();
-          console.log("Primeira visita - dados carregados com sucesso!");
-        }
-        // Se já existir cookie e houver nova versão
-        else if (lastFetchTime !== ultima_busca_api) {
-          // Atualiza os cookies
-          setCookie('ultima_busca_api', ultima_busca_api, 1);
-          setCookie('ult_dado', Ult_Dado, 1);
-          setCookie('data_ult_dado', Data_ult_dado, 1);
+          // Verificar se os dados são diferentes dos anteriores
+          if (Ult_Dado !== lastDado || Data_ult_dado !== lastDataDado) {
+            // Atualizar os cookies com a hora da última busca
+            setCookie('ultima_busca_api', currentTime, 1); // Salva o horário atual
+            setCookie('ult_dado', Ult_Dado, 1);
+            setCookie('data_ult_dado', Data_ult_dado, 1);
 
-          // Mostra notificação
-          showNotification();
-
-          // Atualiza os dados após 5 segundos
-          setTimeout(() => {
+            // Atualizar os dados exibidos
             const formattedDado = formatUltDado(Ult_Dado);
             const formattedDate = formatDate(Data_ult_dado);
 
             document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
             document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
-
+            showNotification();
             console.clear();
             console.log("Informações atualizadas com sucesso!");
-          }, 5000);
-        } else if (lastDado && lastDataDado) {
-          // Usa os valores dos cookies se não houver nova versão
-          const formattedDado = formatUltDado(lastDado);
-          const formattedDate = formatDate(lastDataDado);
+          } else {
+            // Caso os dados não tenham mudado
+            console.clear();
+            console.log("Dados não atualizados, nada mudou.");
+          }
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar os dados:", error);
+        });
+    } else {
+      // Se não passou 60 segundos, exibe a informação do cookie
+      const lastDado = getCookie('ult_dado');
+      const lastDataDado = getCookie('data_ult_dado');
+      const formattedDado = formatUltDado(lastDado);
+      const formattedDate = formatDate(lastDataDado);
 
-          document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
-          document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
-          console.clear()
-          console.log('Sem nova versão, pulando atualização.');
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar os dados:", error);
-      });
+      document.getElementById("Ult_Dado_Numero").innerText = formattedDado;
+      document.getElementById("Data_ult_dado").innerHTML = `<i class="far fa-clock" style="animation: shake 3s infinite;"></i> Em: <span style="color: white;">${formattedDate}</span>`;
+      console.clear();
+      console.log("Dados não atualizados, tempo de requisição ainda não passou.");
+    }
   }
 
+  // Função para formatar o dado
   function formatUltDado(dado) {
     const dadoStr = dado.toString();
     const numeroComZeros = dadoStr.padStart(3, '0');
@@ -177,8 +167,9 @@ document.addEventListener("DOMContentLoaded", function() {
     return `${parteInteira},${parteDecimal}`;
   }
 
+  // Função para formatar a data
   function formatDate(timestamp) {
-    const date = new Date(parseInt(timestamp)); // Ensure timestamp is treated as a number
+    const date = new Date(parseInt(timestamp)); // Garantir que o timestamp seja tratado como número
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
@@ -187,11 +178,9 @@ document.addEventListener("DOMContentLoaded", function() {
     return `${day}/${month}/${year} - ${hours}:${minutes}`;
   }
 
-  // Call the function immediately when the page loads
+  // Chamar a função imediatamente ao carregar a página
   fetchAndDisplayData();
 
-  // Start the check every 60 seconds
-  setInterval(fetchAndDisplayData, 60000); // 60000 milliseconds = 60 seconds
-
-
+  // Iniciar a verificação a cada 60 segundos
+  setInterval(fetchAndDisplayData, 60000); // 60000 milissegundos = 60 segundos
 });
